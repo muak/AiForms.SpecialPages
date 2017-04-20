@@ -61,21 +61,6 @@ namespace AiForms.SpecialPages
 			set { SetValue(UnSelectedTextColorProperty, value); }
 		}
 
-		public static BindableProperty OffScreenPageLimitProperty =
-			BindableProperty.Create(
-				nameof(OffScreenPageLimit),
-				typeof(int),
-				typeof(TabbedPageEx),
-				1,
-				defaultBindingMode: BindingMode.OneWay
-			);
-
-		public int OffScreenPageLimit {
-			get { return (int)GetValue(OffScreenPageLimitProperty); }
-			set { SetValue(OffScreenPageLimitProperty, value); }
-		}
-
-
 		public static BindableProperty StatusBarBackColorProperty =
 			BindableProperty.Create(
 				nameof(StatusBarBackColor),
@@ -130,45 +115,12 @@ namespace AiForms.SpecialPages
 			public Color UnSelectedColor { get; set; }
 			public Color BarTextColor { get; set; }
 			public Color StatusBarBackColor { get; set; }
-			//public TabbedPageEx Parent { get; set; }
 
 			public bool IsDefaultColor {
 				get {
 					return (SelectedColor == Color.Default && UnSelectedColor == Color.Default);
 				}
 			}
-
-		//	private NGraphics.IImage _Image;
-		//	public NGraphics.IImage Image {
-		//		get {
-		//			if (_Image == null) {
-		//				var g = SvgLoader.GetResourceAndLoadSvg(Resource);
-		//				var sv = DependencyService.Get<ISvgService>();
-		//				Device.OnPlatform(
-		//					iOS: () => {
-								
-		//							var tab = this.Parent as TabbedPageEx;
-		//							if (tab.IsDefaultColor && this.IsDefaultColor) {
-		//								_Image = sv.GetCanvas(g, 30, 30);
-		//							}
-		//							else {
-		//								_Image = sv.GetCanvas(g, 30, 30,
-		//									  SelectedColor == Xamarin.Forms.Color.Default ? tab.SelectedColor : SelectedColor);
-		//								UnSelectedImage = sv.GetCanvas(g, 30, 30,
-		//									   UnSelectedColor == Xamarin.Forms.Color.Default ? tab.UnSelectedColor : UnSelectedColor);
-		//							}
-								
-
-		//					},
-		//					Android: () => { _Image = sv.GetCanvas(g, 24, 24); }
-		//				);
-		//			}
-
-		//			return _Image;
-		//		}
-		//	}
-
-		//	public NGraphics.IImage UnSelectedImage { get; private set; }
 		}
 	}
 }
