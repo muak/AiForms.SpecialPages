@@ -39,6 +39,16 @@
     <Compile Include="Views\MyTabbed.xaml.cs">
       <DependentUpon>MyTabbed.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MyNavigationPage.cs" />
+    <Compile Include="Views\NextPage.xaml.cs">
+      <DependentUpon>NextPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\NextPageViewModel.cs" />
+    <Compile Include="Views\ModalNavi.cs" />
+    <Compile Include="Views\SecondPage.xaml.cs">
+      <DependentUpon>SecondPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabbedHasNaviPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -53,6 +63,13 @@
     <EmbeddedResource Include="Resources\back-in-time.svg" />
     <EmbeddedResource Include="Resources\camera.svg" />
     <EmbeddedResource Include="Resources\colours.svg" />
+    <EmbeddedResource Include="Resources\cross.svg" />
+    <EmbeddedResource Include="Views\NextPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SecondPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">

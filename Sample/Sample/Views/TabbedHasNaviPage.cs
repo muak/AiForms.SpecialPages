@@ -1,17 +1,16 @@
-﻿using AiForms.SpecialPages;
-using Xamarin.Forms;
+﻿using System;
 using System.Collections.Generic;
+using AiForms.SpecialPages;
+using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace Sample.Views
 {
-	public partial class MyTabbed : TabbedPageEx
+	public class TabbedHasNaviPage:TabbedPageEx
 	{
-		public MyTabbed()
+		public TabbedHasNaviPage()
 		{
-			InitializeComponent();
-
 			SelectedColor = Color.Orange;
 			UnSelectedColor = Color.DimGray;
 			SelectedTextColor = Color.Gray;
@@ -33,16 +32,15 @@ namespace Sample.Views
 					Title = "Def",
 					Resource = "colours.svg",
 					SelectedColor = Color.GreenYellow,
-					BarTextColor = Color.Green,
+					BarTextColor = Color.SeaGreen,
 				},
 				new TabAttribute{
 					Title = "Xyz",
 					Resource = "back-in-time.svg",
 					SelectedColor = Color.Blue,
-					BarTextColor = Color.DeepSkyBlue,
+					BarTextColor = Color.SkyBlue,
 				},
 			};
 		}
 	}
 }
-

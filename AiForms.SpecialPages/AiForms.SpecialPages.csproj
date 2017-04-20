@@ -30,6 +30,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TabbedPageEx.cs" />
     <Compile Include="SvgLoader.cs" />
+    <Compile Include="ToolbarItemEx.cs" />
+    <Compile Include="NavigationPageEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

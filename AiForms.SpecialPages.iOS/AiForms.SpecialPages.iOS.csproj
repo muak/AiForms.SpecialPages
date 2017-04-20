@@ -70,7 +70,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TabbedPageExRenderer.cs" />
     <Compile Include="SvgToUIimage.cs" />
-    <Compile Include="Forms.cs" />
+    <Compile Include="SpecialPages.cs" />
+    <Compile Include="NavigationPageExRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

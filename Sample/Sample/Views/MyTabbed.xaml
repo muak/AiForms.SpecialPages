@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <my:TabbedPageEx xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:v="clr-namespace:Sample.Views;assembly=Sample"
 	xmlns:my="clr-namespace:AiForms.SpecialPages;assembly=AiForms.SpecialPages"
 	xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
-	prism:ViewModelLocator.AutowireViewModel="True" 
+	prism:ViewModelLocator.AutowireViewModel="false" 
 	x:Class="Sample.Views.MyTabbed">
 
-	<ContentPage Title="abc" />
-	<ContentPage Title="def" />
-	<ContentPage Title="xyz" />
+	<v:MainPage />
+	<v:SecondPage />
+	<v:NextPage />
 </my:TabbedPageEx>

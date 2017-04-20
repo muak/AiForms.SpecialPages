@@ -21,6 +21,15 @@ namespace AiForms.SpecialPages.iOS
 				Page child = Tabbed.Children[i];
 				var attr = tabbedEx.TabAttributes[i];
 
+				if (child is NavigationPageEx) {
+					var naviEx = child as NavigationPageEx;
+
+					naviEx.BarTextColor = tabbedEx.BarTextColor;
+					if (attr.BarTextColor != Xamarin.Forms.Color.Default) {
+						naviEx.BarTextColor = attr.BarTextColor;
+					}
+				}
+
 				if (string.IsNullOrEmpty(attr.Resource)) continue;
 				var vc = Platform.GetRenderer(child).ViewController;
 

@@ -3,6 +3,7 @@ using System.Reflection;
 using Microsoft.Practices.ObjectBuilder2;
 using Prism.Unity;
 using Sample.Views;
+using Microsoft.Practices.Unity;
 
 namespace Sample
 {
@@ -10,13 +11,28 @@ namespace Sample
 	{
 		public App(IPlatformInitializer initializer = null) : base(initializer) { }
 
-		protected override void OnInitialized()
+		protected override async void OnInitialized()
 		{
 			InitializeComponent();
 
 			AiForms.SpecialPages.SvgLoader.Init(this.GetType());
 
-			NavigationService.NavigateAsync("MyTabbed");
+			await NavigationService.NavigateAsync("MyNavigationPage/MyTabbed");
+
+			//var tabbed = new TabbedHasNaviPage();
+			//var naviA = new NaviA();
+			//var naviB = new NaviB();
+			//var naviC = new NaviC();
+
+			//await naviA.PushAsync(Container.Resolve<MainPage>());
+			//await naviB.PushAsync(Container.Resolve<SecondPage>());
+			//await naviC.PushAsync(Container.Resolve<NextPage>());
+
+			//tabbed.Children.Add(naviA);
+			//tabbed.Children.Add(naviB);
+			//tabbed.Children.Add(naviC);
+
+			//MainPage = tabbed;
 		}
 
 		protected override void RegisterTypes()
