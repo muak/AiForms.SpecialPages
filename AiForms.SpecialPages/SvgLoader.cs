@@ -12,12 +12,14 @@ namespace AiForms.SpecialPages
 		static Type AppType;
 		static Dictionary<string, Graphic> IconCache;
 
-		public static void Init(Type appType) {
+		public static void Init(Type appType)
+		{
 			AppType = appType;
 			IconCache = new Dictionary<string, Graphic>();
 		}
 
-		public static Graphic GetResourceAndLoadSvg(string path) {
+		public static Graphic GetResourceAndLoadSvg(string path)
+		{
 			if (AppType == null) return null;
 			if (path == null) return null;
 

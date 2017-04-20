@@ -18,7 +18,7 @@ namespace Sample.Views
 			UnSelectedTextColor = Color.Silver;
 			BarBackgroundColor = Color.White;
 			StatusBarBackColor = Color.LightBlue;
-			IsTextHidden = false;
+			IsTextHidden = true;
 
 			this.On<Android>().SetOffscreenPageLimit(2);
 
@@ -26,14 +26,17 @@ namespace Sample.Views
 				new TabAttribute{
 					Title = "Abc",
 					Resource = "camera.svg",
+					SelectedColor = Color.Orange,
 				},
 				new TabAttribute{
 					Title = "Def",
 					Resource = "colours.svg",
+					SelectedColor = Color.GreenYellow,
 				},
 				new TabAttribute{
 					Title = "Xyz",
 					Resource = "back-in-time.svg",
+					SelectedColor = Color.Blue,
 				},
 			};
 		}

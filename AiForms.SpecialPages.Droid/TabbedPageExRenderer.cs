@@ -13,14 +13,15 @@ using Xamarin.Forms.Platform.Android.AppCompat;
 [assembly: ExportRenderer(typeof(TabbedPageEx), typeof(TabbedPageExRenderer))]
 namespace AiForms.SpecialPages.Droid
 {
-	public class TabbedPageExRenderer : TabbedPageRenderer,TabLayout.IOnTabSelectedListener
+	public class TabbedPageExRenderer : TabbedPageRenderer, TabLayout.IOnTabSelectedListener
 	{
 
 		private TabbedPageEx tabbedEx;
 		private TabLayout tabs;
 		private Window window;
 
-		protected override void OnElementChanged(ElementChangedEventArgs<TabbedPage> e) {
+		protected override void OnElementChanged(ElementChangedEventArgs<TabbedPage> e)
+		{
 			base.OnElementChanged(e);
 
 			var fieldInfo = typeof(TabbedPageRenderer).GetField("_tabLayout", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -41,12 +42,12 @@ namespace AiForms.SpecialPages.Droid
 					//OnTabSelectedListenerを上書きする
 					tabs.SetOnTabSelectedListener(this);
 				}
-                
+
 				// https://github.com/xamarin/Xamarin.Forms/blob/master/Xamarin.Forms.Platform.Android/AppCompat/TabbedPageRenderer.cs#L297
 				// OnPagePropertyChangedでいらんことしてるので即TeardownPageを呼び出して解除する
 				// （TabのTextを子ページのTitleと連動させているが、TabのTextはTabAttributeで設定するようにしているので不要）
-				foreach(var page in Element.Children){
-					teardownPage.Invoke(this,new object[]{page});
+				foreach (var page in Element.Children) {
+					teardownPage.Invoke(this, new object[] { page });
 				}
 
 				for (var i = 0; i < tabbedEx.TabAttributes.Count; i++) {
@@ -54,7 +55,7 @@ namespace AiForms.SpecialPages.Droid
 
 					if (string.IsNullOrEmpty(attr.Resource)) continue;
 
-					var bitmap = SvgToBitmap.GetBitmap(attr.Resource,24,24);
+					var bitmap = SvgToBitmap.GetBitmap(attr.Resource, 24, 24);
 					var icon = new BitmapDrawable(Context.Resources, bitmap);
 					var tab = tabs.GetTabAt(i);
 					tab.SetIcon(icon);
@@ -67,9 +68,9 @@ namespace AiForms.SpecialPages.Droid
 								color = attr.SelectedColor.ToAndroid();
 							}
 							tabs.SetSelectedTabIndicatorColor(color);
-                            if (tabbedEx.StatusBarBackColor != Xamarin.Forms.Color.Default) {
-                                window.SetStatusBarColor(tabbedEx.StatusBarBackColor.ToAndroid());
-                            }
+							if (tabbedEx.StatusBarBackColor != Xamarin.Forms.Color.Default) {
+								window.SetStatusBarColor(tabbedEx.StatusBarBackColor.ToAndroid());
+							}
 							else if (attr.StatusBarBackColor != Xamarin.Forms.Color.Default) {
 								window.SetStatusBarColor(attr.StatusBarBackColor.ToAndroid());
 							}
@@ -91,10 +92,12 @@ namespace AiForms.SpecialPages.Droid
 			}
 		}
 
-		void TabLayout.IOnTabSelectedListener.OnTabReselected(TabLayout.Tab tab) {
+		void TabLayout.IOnTabSelectedListener.OnTabReselected(TabLayout.Tab tab)
+		{
 
 		}
-		void TabLayout.IOnTabSelectedListener.OnTabSelected(TabLayout.Tab tab) {
+		void TabLayout.IOnTabSelectedListener.OnTabSelected(TabLayout.Tab tab)
+		{
 			if (tabbedEx == null)
 				return;
 
@@ -112,9 +115,9 @@ namespace AiForms.SpecialPages.Droid
 			tab.Icon.SetTint(color);
 			tabs.SetSelectedTabIndicatorColor(color);
 
-            if (tabbedEx.StatusBarBackColor != Xamarin.Forms.Color.Default) {
-                window.SetStatusBarColor(tabbedEx.StatusBarBackColor.ToAndroid());
-            }
+			if (tabbedEx.StatusBarBackColor != Xamarin.Forms.Color.Default) {
+				window.SetStatusBarColor(tabbedEx.StatusBarBackColor.ToAndroid());
+			}
 			else if (attr.StatusBarBackColor != Xamarin.Forms.Color.Default) {
 				window.SetStatusBarColor(attr.StatusBarBackColor.ToAndroid());
 			}
@@ -128,8 +131,9 @@ namespace AiForms.SpecialPages.Droid
 
 		}
 
-		void TabLayout.IOnTabSelectedListener.OnTabUnselected(TabLayout.Tab tab) {
-            if (tabbedEx == null) return;
+		void TabLayout.IOnTabSelectedListener.OnTabUnselected(TabLayout.Tab tab)
+		{
+			if (tabbedEx == null) return;
 
 			int selectedIndex = tab.Position;
 
@@ -146,7 +150,8 @@ namespace AiForms.SpecialPages.Droid
 			tabbedEx.Children[selectedIndex].PropertyChanged -= CurrentPage_PropertyChanged;
 		}
 
-		void CurrentPage_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) {
+		void CurrentPage_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		{
 			if (e.PropertyName == Page.TitleProperty.PropertyName) {
 				tabbedEx.Title = (sender as Page).Title;
 			}

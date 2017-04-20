@@ -1,24 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
+﻿using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace AiForms.SpecialPages
 {
-	public class TabbedPageEx:TabbedPage
+	public class TabbedPageEx : TabbedPage
 	{
-		
+
 		public static BindableProperty ResourceProperty =
 			BindableProperty.Create(nameof(Resource), typeof(string), typeof(TabbedPageEx), null,
 				defaultBindingMode: Xamarin.Forms.BindingMode.OneWay
 			);
 
-
 		public string Resource {
 			get { return (string)GetValue(ResourceProperty); }
-			set {SetValue(ResourceProperty, value);}
+			set { SetValue(ResourceProperty, value); }
 		}
 
 		public static BindableProperty SelectedColorProperty =
@@ -75,10 +70,10 @@ namespace AiForms.SpecialPages
 			set { SetValue(StatusBarBackColorProperty, value); }
 		}
 
-		public bool IsDefaultColor { 
+		public bool IsDefaultColor {
 			get {
 				return (SelectedColor == Color.Default && UnSelectedColor == Color.Default);
-			} 
+			}
 		}
 
 		public static BindableProperty IsTextHiddenProperty =
@@ -104,8 +99,6 @@ namespace AiForms.SpecialPages
 			get { return (IList<TabAttribute>)GetValue(TabAttributesProperty); }
 			set { SetValue(TabAttributesProperty, value); }
 		}
-
-
 
 		public class TabAttribute
 		{
