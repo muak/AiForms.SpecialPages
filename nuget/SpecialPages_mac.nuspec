@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>AiForms.SpecialPages</id>
+        <version>1.0.0</version>
+        <title>AiForms.SpecialPages</title>
+        <authors>kamu</authors>
+        <owners>kamu</owners>
+        <projectUrl>https://github.com/muak/AiForms.SpecialPages</projectUrl>
+        <licenseUrl>https://github.com/muak/AiForms.SpecialPages/blob/master/LICENSE.txt</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>TabbedPage,NavigationPage,ToolbarItem CustomRenderers</description>
+        <summary></summary>
+        <tags></tags>
+        <language>en-US</language>
+        <dependencies>
+            <group targetFramework="portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10">
+                <dependency id="Xamarin.Forms" version="2.3.4" />
+            </group>
+            <group targetFramework="MonoAndroid">
+                <dependency id="Xamarin.Forms" version="2.3.4" />
+            </group>
+            <group targetFramework="MonoTouch">
+                <dependency id="Xamarin.Forms" version="2.3.4" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <!-- PCL -->
+        <file src="../AiForms.SpecialPages/bin/Release/AiForms.SpecialPages.dll" target="lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10" />
+        <!-- Mono.Android -->
+        <file src="../AiForms.SpecialPages/bin/Release/AiForms.SpecialPages.dll" target="lib/MonoAndroid" />
+        <file src="../AiForms.SpecialPages.Droid/bin/Release/AiForms.SpecialPages.Droid.dll" target="lib/MonoAndroid" />
+        <!-- Mono.Touch -->
+        <file src="../AiForms.SpecialPages/bin/Release/AiForms.SpecialPages.dll" target="lib/MonoTouch" />
+        <file src="../AiForms.SpecialPages.iOS/bin/Release/AiForms.SpecialPages.iOS.dll" target="lib/MonoTouch" />
+        <!-- Xamarin.iOS10 -->
+        <file src="../AiForms.SpecialPages/bin/Release/AiForms.SpecialPages.dll" target="lib/Xamarin.iOS10" />
+        <file src="../AiForms.SpecialPages.iOS/bin/Release/AiForms.SpecialPages.iOS.dll" target="lib/Xamarin.iOS10" />
+    </files>
+</package>
