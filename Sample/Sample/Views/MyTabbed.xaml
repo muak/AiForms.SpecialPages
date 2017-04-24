@@ -4,7 +4,7 @@
 	xmlns:v="clr-namespace:Sample.Views;assembly=Sample"
 	xmlns:my="clr-namespace:AiForms.SpecialPages;assembly=AiForms.SpecialPages"
 	xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
-	prism:ViewModelLocator.AutowireViewModel="false" 
+	prism:ViewModelLocator.AutowireViewModel="true" 
 	x:Class="Sample.Views.MyTabbed">
 
 	<v:MainPage />

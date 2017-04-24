@@ -17,22 +17,22 @@ namespace Sample
 
 			AiForms.SpecialPages.SvgLoader.Init(this.GetType());
 
-			await NavigationService.NavigateAsync("MyNavigationPage/MyTabbed");
+			//await NavigationService.NavigateAsync("MyNavigationPage/MyTabbed");
 
-			//var tabbed = new TabbedHasNaviPage();
-			//var naviA = new NaviA();
-			//var naviB = new NaviB();
-			//var naviC = new NaviC();
+			var tabbed = new TabbedHasNaviPage();
+			var naviA = new NaviA();
+			var naviB = new NaviB();
+			var naviC = new NaviC();
 
-			//await naviA.PushAsync(Container.Resolve<MainPage>());
-			//await naviB.PushAsync(Container.Resolve<SecondPage>());
-			//await naviC.PushAsync(Container.Resolve<NextPage>());
+			await naviA.PushAsync(Container.Resolve<MainPage>());
+			await naviB.PushAsync(Container.Resolve<SecondPage>());
+			await naviC.PushAsync(Container.Resolve<NextPage>());
 
-			//tabbed.Children.Add(naviA);
-			//tabbed.Children.Add(naviB);
-			//tabbed.Children.Add(naviC);
+			tabbed.Children.Add(naviA);
+			tabbed.Children.Add(naviB);
+			tabbed.Children.Add(naviC);
 
-			//MainPage = tabbed;
+			MainPage = tabbed;
 		}
 
 		protected override void RegisterTypes()

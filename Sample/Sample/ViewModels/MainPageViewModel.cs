@@ -37,7 +37,7 @@ namespace Sample.ViewModels
 		private DelegateCommand _MoveCommand;
 		public DelegateCommand MoveCommand {
 			get { return _MoveCommand = _MoveCommand ?? new DelegateCommand(() => {
-				_navi.NavigateAsync("SecondPage");
+				_navi.NavigateAsync("SecondPage",null,false);
 			}); }
 		}
 

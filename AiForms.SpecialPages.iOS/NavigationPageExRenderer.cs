@@ -9,94 +9,94 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(NavigationPageEx), typeof(NavigationPageExRenderer))]
 namespace AiForms.SpecialPages.iOS
 {
-	public class NavigationPageExRenderer : NavigationRenderer
-	{
-		public override void PushViewController(UIViewController viewController, bool animated)
-		{
-			base.PushViewController(viewController, animated);
+    public class NavigationPageExRenderer : NavigationRenderer
+    {
+        public override void PushViewController(UIViewController viewController, bool animated)
+        {
+            base.PushViewController(viewController, animated);
 
-			SetIcons();
-		}
+            SetIcons();
+        }
 
-		protected override void Dispose(bool disposing)
-		{
-			var formsItems = (Element as NavigationPageEx).CurrentPage
-														  .ToolbarItems
-														  .Where(x => x.Order != ToolbarItemOrder.Secondary)
-														  .OrderByDescending(x => x.Priority);
+        protected override void Dispose(bool disposing)
+        {
+            var formsItems = (Element as NavigationPageEx).CurrentPage
+                                                          .ToolbarItems
+                                                          .Where(x => x.Order != ToolbarItemOrder.Secondary)
+                                                          .OrderByDescending(x => x.Priority);
 
-			foreach (var item in formsItems) {
-				var itemEx = item as ToolbarItemEx;
-				if (itemEx == null) continue;
-				itemEx.PropertyChanged -= ItemEx_PropertyChanged;
-			}
+            foreach (var item in formsItems) {
+                var itemEx = item as ToolbarItemEx;
+                if (itemEx == null) continue;
+                itemEx.PropertyChanged -= ItemEx_PropertyChanged;
+            }
 
-			var ctrl = ViewControllers.Last();
-			foreach (var item in ctrl.NavigationItem.LeftBarButtonItems) {
-				item.Dispose();
-			}
+            var ctrl = ViewControllers.Last();
+            foreach (var item in ctrl.NavigationItem.LeftBarButtonItems) {
+                item.Dispose();
+            }
 
-			base.Dispose(disposing);
-		}
+            base.Dispose(disposing);
+        }
 
-		void SetIcons()
-		{
-			var formsItems = (Element as NavigationPageEx).CurrentPage
-														  .ToolbarItems
-														  .Where(x => x.Order != ToolbarItemOrder.Secondary)
-														  .OrderByDescending(x => x.Priority);
+        void SetIcons()
+        {
+            var formsItems = (Element as NavigationPageEx).CurrentPage
+                                                          .ToolbarItems
+                                                          .Where(x => x.Order != ToolbarItemOrder.Secondary)
+                                                          .OrderByDescending(x => x.Priority);
 
-			var ctrl = ViewControllers.Last();
-			var nativeItems = ctrl.NavigationItem.RightBarButtonItems;
+            var ctrl = ViewControllers.Last();
+            var nativeItems = ctrl.NavigationItem.RightBarButtonItems;
 
-			var rightItems = new List<UIBarButtonItem>();
-			var leftItems = new List<UIBarButtonItem>();
+            var rightItems = new List<UIBarButtonItem>();
+            var leftItems = new List<UIBarButtonItem>();
 
-			var ncnt = -1;
-			foreach (var item in formsItems) {
-				ncnt++;
-				var itemEx = item as ToolbarItemEx;
-				if (itemEx == null) continue;
+            var ncnt = -1;
+            foreach (var item in formsItems) {
+                ncnt++;
+                var itemEx = item as ToolbarItemEx;
+                if (itemEx == null) continue;
 
-				if (itemEx.IsLeftIcon) {
-					leftItems.Add(nativeItems[ncnt]);
-					UpdateIcon(itemEx, nativeItems[ncnt]);
-					continue;
-				}
+                if (itemEx.IsLeftIcon) {
+                    leftItems.Add(nativeItems[ncnt]);
+                    UpdateIcon(itemEx, nativeItems[ncnt]);
+                    continue;
+                }
 
-				rightItems.Add(nativeItems[ncnt]);
-				UpdateIcon(itemEx, nativeItems[ncnt]);
-			}
+                rightItems.Add(nativeItems[ncnt]);
+                UpdateIcon(itemEx, nativeItems[ncnt]);
+            }
 
-			ctrl.NavigationItem.SetRightBarButtonItems(rightItems.ToArray(), false);
-			ctrl.NavigationItem.SetLeftBarButtonItems(leftItems.ToArray(), false);
-		}
+            ctrl.NavigationItem.SetRightBarButtonItems(rightItems.ToArray(), false);
+            ctrl.NavigationItem.SetLeftBarButtonItems(leftItems.ToArray(), false);
+        }
 
-		void UpdateIcon(ToolbarItemEx itemEx, UIBarButtonItem nativeItem)
-		{
-			itemEx.PropertyChanged -= ItemEx_PropertyChanged;
-			itemEx.PropertyChanged += ItemEx_PropertyChanged;
+        void UpdateIcon(ToolbarItemEx itemEx, UIBarButtonItem nativeItem)
+        {
+            itemEx.PropertyChanged -= ItemEx_PropertyChanged;
+            itemEx.PropertyChanged += ItemEx_PropertyChanged;
 
-			if (!itemEx.IsVisible) {
-				nativeItem.Image = null;
-				nativeItem.Title = null;
-				return;
-			}
-			if (string.IsNullOrEmpty(itemEx.Resource)) return;
+            if (!itemEx.IsVisible) {
+                nativeItem.Image = null;
+                nativeItem.Title = null;
+                return;
+            }
+            if (string.IsNullOrEmpty(itemEx.Resource)) return;
 
-			nativeItem.Image = SvgToUIImage.GetUIImage(itemEx.Resource, 20, 20);
-			nativeItem.Title = null;
-			nativeItem.Style = UIBarButtonItemStyle.Plain;
-			nativeItem.Enabled = itemEx.IsEnabled;
-		}
+            nativeItem.Image = SvgToUIImage.GetUIImage(itemEx.Resource, 20, 20);
+            nativeItem.Title = null;
+            nativeItem.Style = UIBarButtonItemStyle.Plain;
+            nativeItem.Enabled = itemEx.IsEnabled;
+        }
 
-		void ItemEx_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-		{
-			if (e.PropertyName == ToolbarItemEx.IsEnabledProperty.PropertyName ||
-			   e.PropertyName == ToolbarItemEx.IsVisibleProperty.PropertyName) {
-				SetIcons();
-			}
-		}
-	}
+        void ItemEx_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == ToolbarItemEx.IsEnabledProperty.PropertyName ||
+               e.PropertyName == ToolbarItemEx.IsVisibleProperty.PropertyName) {
+                SetIcons();
+            }
+        }
+    }
 }
 
